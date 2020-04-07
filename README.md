@@ -5,3 +5,5 @@ Integrate Native Android With React Native
 
 `"react": "^16.9.0",
  "react-native": "^0.61.5"`
+
+![Output sample](https://github.com/club9822/Java_ReactNatvie/blob/master/screencast-Genymotion-2020-04-08_04.00.45.534.webm)

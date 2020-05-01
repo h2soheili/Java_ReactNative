@@ -30,12 +30,4 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <Button
-        android:id="@+id/button"
-        style="@android:style/Widget.Material.Button.Small"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="@string/button"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

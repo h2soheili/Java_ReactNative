@@ -5,26 +5,32 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.View;
+import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.widget.Button;
 
-import com.facebook.react.ReactInstanceManager;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.android.material.navigation.NavigationView;
-
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import com.facebook.react.ReactInstanceManager;
+import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReactMethod;
+import com.facebook.react.bridge.ReadableMap;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
+    private Button goToReactActivity;
     private AppBarConfiguration mAppBarConfiguration;
     Button btnClickMe;
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;  // Choose any value
@@ -65,6 +71,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         btnClickMe = (Button) findViewById(R.id.button);
         btnClickMe.setOnClickListener(MainActivity.this);
+        String qrCode = "876398776";
+        if(mReactInstanceManager != null){
+            ReactContext reactContext = mReactInstanceManager.getCurrentReactContext();
+            if (reactContext != null) {
+//            reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+//                    .emit("qrCode", qrCode);
+            }
+        }
+
+        String msg=getIntent().getStringExtra("message");
+        if(msg !=null &&  msg.length()>0){
+            Log.e("log:: message in Main",msg);
+        }
+
     }
 
     @Override
@@ -83,7 +103,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
         Intent intent = new Intent(MainActivity.this, MyReactActivity.class);
+        intent.putExtra("message", "EXTRA_SESSION_ID");
         startActivity(intent);
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -98,5 +120,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         mReactInstanceManager.onActivityResult(this, requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap map) {
+
+    }
+    @ReactMethod
+    public void saveUser(ReadableMap userData) {
+        Log.e("log:: User Res", "" + userData);
     }
 }

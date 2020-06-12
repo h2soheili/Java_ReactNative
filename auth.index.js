@@ -1,8 +1,8 @@
 import React from 'react';
 import {AppRegistry, StyleSheet, Text, View ,TouchableOpacity,TextInput} from 'react-native';
 import { DeviceEventEmitter , NativeModules } from 'react-native';
-import AuthReactNative from './auth.index';
-class HelloWorld extends React.Component {
+
+export default class HelloWorld extends React.Component {
   constructor(props) {
     super(props);
     this.state={
@@ -24,7 +24,7 @@ class HelloWorld extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.hello}>this is First React activity  (Screen 1)</Text>
+        <Text style={styles.hello}>this is Second React activity  (Screen 2)</Text>
         <View style={{width:100,height:40,backgroundColor:'grey'}}>
           <TextInput style={{width:'100%',height:'100%'}} value={this.state.text} onChangeText={e=>this.setState({text:e})} />
         </View>
@@ -45,24 +45,6 @@ class HelloWorld extends React.Component {
             press To Back Native Activity
           </Text>
         </TouchableOpacity>
-
-        <TouchableOpacity
-            onPress={()=>{
-
-              NativeModules.ActivityStarter.navigateToActivity('AuthReactActivity',this.state.text)
-
-              // const nativeComm = NativeModules.ReactNativeBridge;
-              // if(nativeComm){
-              //   nativeComm.saveUser({name:'ali'});
-              // }
-
-            }}
-            style={{backgroundColor:'#a5def1',marginVertical:30}}
-        >
-          <Text>
-           navigate Auth React Activity
-          </Text>
-        </TouchableOpacity>
       </View>
     );
   }
@@ -77,8 +59,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-    color:'blue'
+    color:'red'
   },
 });
-AppRegistry.registerComponent('AuthReactNativeApp', () => AuthReactNative);
-AppRegistry.registerComponent('MyReactNativeApp', () => HelloWorld);
+
+// AppRegistry.registerComponent('AuthReactNativeApp', () => HelloWorld);

@@ -30,23 +30,4 @@
         android:background="?attr/colorPrimary"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <RelativeLayout
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginLeft="100dp"
-
-        >
-
-        <Button
-            android:id="@+id/button"
-            style="@android:style/Widget.Material.Button.Small"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:onClick="onClick"
-            android:text="@string/button"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-            android:typeface="monospace" />
-    </RelativeLayout>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -12,8 +12,10 @@
     <string name="menu_slideshow">Slideshow</string>
 
     <string name="home_second">Home Second</string>
-    <string name="button">Press to Go React Activity</string>
+    <string name="button">Press to Go MyReact Activity</string>
+    <string name="button2">Press to Go AuthReact Activity  goToAuthReact</string>
     <string name="txt_1">sadsddwd</string>
     <string name="input_1">hint</string>
     <string name="input_2">sadasddasds sds d</string>
+    <string name="authreactactivity">AuthReactActivity</string>
 </resources>

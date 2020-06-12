@@ -19,6 +19,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.bridge.ReactContext;
 import com.facebook.react.bridge.ReactMethod;
@@ -30,9 +31,9 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, OnMapReadyCallback {
-    private Button goToReactActivity;
+    private Button btnClickMe;
+    private Button btnClickM2;
     private AppBarConfiguration mAppBarConfiguration;
-    Button btnClickMe;
     private final int OVERLAY_PERMISSION_REQ_CODE = 1;  // Choose any value
     private ReactInstanceManager mReactInstanceManager;
     @Override
@@ -70,7 +71,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
         btnClickMe = (Button) findViewById(R.id.button);
+        btnClickM2 = (Button) findViewById(R.id.button2);
         btnClickMe.setOnClickListener(MainActivity.this);
+        btnClickM2.setOnClickListener(MainActivity.this);
         String qrCode = "876398776";
         if(mReactInstanceManager != null){
             ReactContext reactContext = mReactInstanceManager.getCurrentReactContext();
@@ -100,13 +103,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-
-    @Override
     public void onClick(View v) {
 
-        Intent intent = new Intent(MainActivity.this, MyReactActivity.class);
-        intent.putExtra("message", "EXTRA_SESSION_ID");
-        startActivity(intent);
+        switch (v.getId()) {
+
+            case R.id.button:
+                // do your code
+
+                Log.e("log:: User Res", "onClick  onClick" );
+                Intent intent = new Intent(MainActivity.this, MyReactActivity.class);
+                intent.putExtra("message", "EXTRA_SESSION_ID");
+                startActivity(intent);
+                break;
+
+            case R.id.button2:
+                // do your code
+                Log.e("log:: User Res", "goToAuthReact  goToAuthReact" );
+                intent = new Intent(MainActivity.this, AuthReactActivity.class);
+                intent.putExtra("message", "AuthReactActivity");
+                startActivity(intent);
+                break;
+
+
+            default:
+                break;
+        }
+    }
+    public void goToAuthReact(View v) {
+
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override

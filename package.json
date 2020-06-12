@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start"
+    "start": "react-native start",
+    "bundle-my": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res/",
+    "bundle-auth": "react-native bundle --platform android --dev false --entry-file auth.index.js --bundle-output android/app/src/main/assets/auth.index.android.bundle --assets-dest android/app/src/main/res/"
   },
   "dependencies": {
     "react": "^16.9.0",

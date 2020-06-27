@@ -30,18 +30,7 @@ public class MyReactActivity extends AppCompatActivity implements DefaultHardwar
         super.onCreate(savedInstanceState);
         SoLoader.init(this, /* native exopackage */ false);
         mReactRootView = new ReactRootView(this);
-        mReactInstanceManager = ReactInstanceManager.builder()
-                .setApplication(getApplication())
-                .setCurrentActivity(this)
-                .setBundleAssetName("index.android.bundle")
-                .setJSMainModulePath("index")
-                .addPackage(new MainReactPackage())
-                .addPackages(Arrays.<ReactPackage>asList(
-                        new ActivityStarterReactPackage()
-                ))
-                .setUseDeveloperSupport(BuildConfig.DEBUG)
-                .setInitialLifecycleState(LifecycleState.RESUMED)
-                .build();
+        mReactInstanceManager = ReactInstanceSingleton.getReactInstanceManager(getApplication());
         // The string here (e.g. "MyReactNativeApp") has to match
         // the string in AppRegistry.registerComponent() in index.js
         Bundle initialProps = new Bundle();

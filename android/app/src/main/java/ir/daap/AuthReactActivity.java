@@ -50,6 +50,14 @@ public class AuthReactActivity extends AppCompatActivity implements DefaultHardw
         mReactRootView.startReactApplication(mReactInstanceManager, "AuthReactNativeApp", initialProps);
 
         setContentView(mReactRootView);
+/***
+ *
+ *       View view = ReactNativeHelper.initReact(this, true);
+ *         setContentView(view);
+ *
+ *   https://medium.com/@singh.manish/android-native-react-native-cross-language-communication-7429ab4d370e
+  */
+
         WritableMap map = Arguments.createMap();
         map.putString("key1", "Value1");
         map.putString("key1", "Value1");
